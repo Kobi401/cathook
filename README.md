@@ -1,5 +1,5 @@
 # Woofhook Training Software
-![banner](https://imgur.com/a/dtHSgrF)
+![banner](https://imgur.com/JADwlOP)
 
 Soon to be started
 
