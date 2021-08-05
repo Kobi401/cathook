@@ -1,4 +1,4 @@
-![banner](https://imgur.com/a/YekggbV)
+![banner](https://imgur.com/a/dtHSgrF)
 
 # Woofhook Training Software
 
