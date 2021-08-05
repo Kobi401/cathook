@@ -1,6 +1,5 @@
-![banner](https://imgur.com/a/dtHSgrF)
-
 # Woofhook Training Software
+![banner](https://imgur.com/a/dtHSgrF)
 
 Soon to be started
 
