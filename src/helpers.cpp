@@ -1952,9 +1952,34 @@ bool GetPlayerInfo(int idx, player_info_s *info)
     bool res = g_IEngine->GetPlayerInfo(idx, info);
     if (!res)
         return res;
-    // Fix friends ID
-    info->friendsID = g_pPlayerResource->GetAccountID(idx);
+
+    // First try parsing GUID, should always work unless a server is being malicious
+    try
+    {
+        std::string guid = info->guid;
+        guid             = guid.substr(5, guid.length() - 6);
+        info->friendsID  = std::stoul(guid.c_str());
+    }
+    catch (...)
+    {
+        // Fix friends ID with player resource
+        info->friendsID = g_pPlayerResource->GetAccountID(idx);
+    }
     return res;
+}
+
+int GetPlayerForUserID(int userID)
+{
+    for (int i = 1; i <= g_IEngine->GetMaxClients(); i++)
+    {
+        player_info_s player_info;
+        if (!GetPlayerInfo(i, &player_info))
+            continue;
+        // Found player
+        if (player_info.userID == userID)
+            return i;
+    }
+    return 0;
 }
 
 bool HookNetvar(std::vector<std::string> path, ProxyFnHook &hook, RecvVarProxyFn function)
